@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apartamento Rota a 50m del mar — Guía del Huésped</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --naranja:#3aa9dc;
+    --naranja-suave:#dbeef8;
+    --azul:#3d5a80;
+    --texto:#2b2b2b;
+    --fondo:#faf7f3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Space Grotesk', 'Georgia', sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    padding-bottom:60px;
+  }
+  header{
+    position:relative;
+    background:var(--naranja);
+    color:white;
+    padding:32px 23px 25px;
+    text-align:center;
+  }
+  header h1{
+    font-size:1.725rem;
+    letter-spacing:0.5px;
+  }
+  header p{
+    margin-top:7px;
+    font-size:1.09rem;
+    opacity:0.95;
+  }
+  .lang-switch{
+    position:absolute;
+    top:10px;
+    right:12px;
+    display:flex;
+    gap:6px;
+  }
+  .lang-btn{
+    background:none;
+    border:none;
+    font-size:1.35rem;
+    line-height:1;
+    cursor:pointer;
+    padding:3px;
+    border-radius:6px;
+    opacity:0.5;
+    transition:opacity 0.2s, background 0.2s;
+  }
+  .lang-btn:hover{ opacity:0.85; }
+  .lang-btn.active{
+    opacity:1;
+    background:rgba(255,255,255,0.35);
+  }
+  .contact-bar{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    background:var(--azul);
+    padding:10px;
+  }
+  .contact-bar a{
+    color:white;
+    text-decoration:none;
+    font-size:0.85rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:#e6dfd5;
+    margin-top:1px;
+  }
+  .card{
+    background:white;
+    padding:26px 14px;
+    text-align:center;
+    cursor:pointer;
+    transition:background 0.2s;
+  }
+  .card:hover{ background:var(--naranja-suave); }
+  .card .icon{
+    font-size:2rem;
+    color:var(--naranja);
+    margin-bottom:10px;
+  }
+  .card h3{
+    font-size:0.95rem;
+    font-weight:normal;
+    color:var(--azul);
+  }
+  .detail{
+    display:none;
+    background:white;
+    border-top:3px solid var(--naranja);
+    padding:22px 20px;
+    animation:fade 0.25s ease-in;
+  }
+  .detail.open{ display:block; }
+  @keyframes fade{ from{opacity:0} to{opacity:1} }
+  .detail h2{
+    color:var(--azul);
+    font-size:1.15rem;
+    margin-bottom:10px;
+  }
+  .detail p, .detail li{
+    font-size:0.95rem;
+    line-height:1.5;
+    margin-bottom:8px;
+  }
+  .detail ul{ padding-left:20px; }
+  .detail a{ color:var(--naranja); font-weight:600; }
+  .placeholder{
+    background:#fff8ee;
+    border:1px dashed var(--naranja);
+    padding:2px 6px;
+    border-radius:4px;
+    color:#a15b1c;
+    font-style:italic;
+  }
+  .cerrar{
+    display:inline-block;
+    margin-top:10px;
+    color:var(--naranja);
+    font-size:0.85rem;
+    cursor:pointer;
+    text-decoration:underline;
+  }
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:0.8rem;
+    color:#888;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="es" title="Español" onclick="setLang('es')">🇪🇸</button>
+    <button class="lang-btn" data-lang="en" title="English" onclick="setLang('en')">🇬🇧</button>
+    <button class="lang-btn" data-lang="fr" title="Français" onclick="setLang('fr')">🇫🇷</button>
+  </div>
+  <h1>Apartamento Rota a 50m del mar</h1>
+  <p id="subtitle">Bienvenidos — todo lo que necesitas para tu estancia, en un solo lugar</p>
+</header>
+
+<div class="contact-bar">
+  <a href="tel:+34680191281"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span id="lbl-llamar">Llamar</span></a>
+  <a href="https://wa.me/34680191281">💬<span id="lbl-whatsapp">WhatsApp</span></a>
+  <a href="mailto:juligonsa21@gmail.com">✉️<span id="lbl-email">Email</span></a>
+</div>
+
+<div class="grid" id="grid">
+  <div class="card" data-target="bienvenida">
+    <div class="icon">👋🏼</div>
+    <h3>Bienvenida</h3>
+  </div>
+  <div class="card" data-target="normas">
+    <div class="icon">📖</div>
+    <h3>Normas de la Casa</h3>
+  </div>
+  <div class="card" data-target="llegada">
+    <div class="icon">🧳</div>
+    <h3>Información de Llegada</h3>
+  </div>
+  <div class="card" data-target="wifi">
+    <div class="icon">📶</div>
+    <h3>WiFi / Internet</h3>
+  </div>
+  <div class="card" data-target="que-ver">
+    <div class="icon">🧭</div>
+    <h3>Qué Ver</h3>
+  </div>
+  <div class="card" data-target="donde-comer">
+    <div class="icon">🍽️</div>
+    <h3>Dónde Comer</h3>
+  </div>
+  <div class="card" data-target="excursiones">
+    <div class="icon"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 2 L12 15 L18 15 Z" fill="#f2a765"/><path d="M12 5 L12 15 L6 15 Z" fill="#f2a765" opacity="0.85"/><path d="M3 17 L21 17 L18 21 L6 21 Z" fill="#8a6d3b"/><line x1="12" y1="2" x2="12" y2="17" stroke="#5a4a3a" stroke-width="0.8"/></svg></div>
+    <h3>Excursiones</h3>
+  </div>
+  <div class="card" data-target="emergencia">
+    <div class="icon">🚨</div>
+    <h3>Contactos de Emergencia</h3>
+  </div>
+</div>
+
+<!-- Paneles de detalle: se abren al pulsar cada tarjeta -->
+
+<div class="detail" id="wifi">
+  <h2>📶 WiFi / Internet</h2>
+  <p><strong>Nombre de la red:</strong> Datono 5G</p>
+  <p><strong>Contraseña:</strong> SevillabajoD</p>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="bienvenida">
+  <h2>👋🏼 Bienvenida</h2>
+  <p>Bienvenidos a <strong>Apartamento Rota a 50m del mar</strong>. Gracias por confiar en nosotros para tu viaje a Rota — hemos preparado todo para que te sientas como en casa.</p>
+  <p>Bienvenidos a nuestro pueblo, Rota (Cádiz). Una ciudad costera ideal para disfrutar de sus playas, su gastronomía y la cultura andaluza.</p>
+  <p><strong>Oficina de Turismo:</strong> Calle Compás del Convento, 10 — <a href="tel:+34956846345">956 84 63 45</a></p>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="llegada">
+  <h2>🧳 Información de Llegada</h2>
+  <p><strong>Hora de check-in:</strong> 15:00</p>
+  <p><strong>Dirección exacta:</strong> Avenida Sevilla nº 60 Bajo D</p>
+        <p>Las llaves se entregan en mano.</p>
+        <p><strong>Check-out:</strong> a las 12:00. Por favor, deja las llaves dentro del propio apartamento, encima de la mesa, y avísanos por WhatsApp.</p>
+  <p><a href="https://www.google.com/maps/search/?api=1&query=Avenida+Sevilla+60+Rota" target="_blank" rel="noopener">📍 Ver ubicación en Google Maps</a></p>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="normas">
+  <h2>📖 Normas de la Casa</h2>
+  <ul>
+    <li>No está permitido fumar dentro de la casa.</li>
+    <li>No se pueden hacer fiestas ni eventos.</li>
+    <li>Respeta el horario de silencio (entre las <strong>00:00</strong> y las <strong>8:00</strong>).</li>
+    <li>Está prohibido hacer copias de las llaves.</li>
+    <li>Cierra siempre las puertas y ventanas al salir.</li>
+    <li>Saca la basura regularmente (los contenedores están a la derecha al salir del edificio).</li>
+    <li>Apaga las luces y el aire acondicionado/calefacción al salir.</li>
+    <li>El número máximo de huéspedes es <strong>3</strong>.</li>
+    <li>Si tienes algún problema, contacta con nosotros lo antes posible para resolverlo.</li>
+    <li>La hora de check-out es las <strong>12:00</strong> del mediodía.</li>
+    <li>La placa de inducción tiene un bloqueo de seguridad: para quitarlo, mantén pulsado el símbolo del candado unos 5 segundos, hasta que desaparezca.</li>
+  </ul>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="que-ver">
+  <h2>🧭 Qué Ver</h2>
+
+  <p><strong>Playas:</strong></p>
+  <ul>
+    <li>Playa de La Costilla — la más famosa. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Costilla+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+    <li>Playa de Punta Candor. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Punta+Candor+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+    <li>Playa de El Chorrillo — la más familiar. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+El+Chorrillo+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+    <li>Explora el paseo marítimo en bici o patinete junto al mar.</li>
+    <li>Rutas ciclistas y senderos naturales por la costa.</li>
+  </ul>
+
+  <p><strong>Cultura e historia</strong> (Oficina de Turismo: <a href="tel:+34956846345">956 84 63 45</a>):</p>
+  <ul>
+    <li>Castillo de Luna — actualmente alberga el ayuntamiento, pero se puede visitar y a menudo acoge exposiciones. <a href="https://www.google.com/maps/search/?api=1&query=Castillo+de+Luna+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+    <li>Iglesia Nuestra Señora de la O — monumento histórico. <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+Nuestra+Se%C3%B1ora+de+la+O+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+  </ul>
+
+  <p><strong>Fiestas y eventos de interés:</strong></p>
+  <ul>
+    <li>Concentración Motera: primer fin de semana de febrero (confirmar fechas).</li>
+    <li>Carnaval, en febrero (confirmar fechas).</li>
+    <li>Semana Santa: una de las tradiciones más importantes de la región, normalmente en abril.</li>
+    <li>Feria de Primavera: principios de mayo (confirmar fechas).</li>
+    <li>Fiesta de la Urta (verano).</li>
+    <li>Fiestas patronales (octubre).</li>
+  </ul>
+
+  <p><strong>Mercadillo:</strong> todos los miércoles por la mañana, a la entrada de Rota (ropa, calzado, artesanía, etc.). <a href="https://www.google.com/maps/search/?api=1&query=Rota+Flea+Market" target="_blank" rel="noopener">📍 Mapa</a></p>
+
+  <p><strong>Nuestras recomendaciones:</strong> ver el atardecer en Punta Candor o en cualquier chiringuito de la playa, pasear por el paseo marítimo, probar los vinos andaluces en La Bodega del Gato o La Bodeguita —en especial la Tintilla de Rota, un vino local—, comer en los mercados locales, hacer la Senda de la Poesía localizando entre las calles del casco antiguo poemas de autores andaluces, y dar un paseo por el bosque de pinos.</p>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="donde-comer">
+  <h2>🍽️ Dónde Comer</h2>
+  <p>Rota ofrece una gran variedad de restaurantes, bares, cafeterías y pizzerías (casi todos con reparto a domicilio). Si buscas algo en concreto, no dudes en contactarnos para ayudarte a encontrar el lugar perfecto según tus gustos.</p>
+  <p>No te vayas sin probar: <strong>el arranque</strong> (verdura asada al estilo de Rota), <strong>el pescado frito</strong>, <strong>las tortillitas de camarones</strong> y la <strong>Tintilla de Rota</strong>, un vino local. Aquí tienes los teléfonos y ubicaciones de muchos establecimientos de la zona:</p>
+
+  <p><strong>Pizzerías</strong> (en todas encontrarás también servicio a domicilio):</p>
+  <ul>
+    <li>Pizzería Gallego — <a href="tel:+34956813612">956 81 36 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Gallego+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Me Gusta — <a href="tel:+34956812530">956 81 25 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Me+Gusta+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Yola — <a href="tel:+34956815822">956 81 58 22</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Yola+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería La Forestal — <a href="tel:+34956840239">956 84 02 39</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+La+Forestal+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Villa de Rota — <a href="tel:+34956815100">956 81 51 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Villa+de+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Daylos — <a href="tel:+34856113429">856 11 34 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Daylos+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Rofe — <a href="tel:+34956811705">956 81 17 05</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Rofe+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Slice of New York — <a href="tel:+34956843002">956 84 30 02</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Slice+of+New+York+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Pink Pepper — <a href="tel:+34856003053">856 00 30 53</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Pink+Pepper+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Burguer Ton — <a href="tel:+34956812713">956 81 27 13</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Burguer+Ton+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+
+  <p><strong>Cocina local:</strong></p>
+  <ul>
+    <li>Bar Rubio Corona — <a href="tel:+34633502798">633 50 27 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+Rubio+Corona+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Bodegas El Gato SL — <a href="tel:+34956810203">956 81 02 03</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bodegas+El+Gato+SL+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Bar La Esquina de San Roque — <a href="tel:+34645424935">645 42 49 35</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+La+Esquina+de+San+Roque+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>No Ni Na (cocina y asado) — <a href="tel:+34956625916">956 62 59 16</a> · <a href="https://www.google.com/maps/search/?api=1&query=No+Ni+Na+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>La Retama — <a href="tel:+34646043712">646 04 37 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=La+Retama+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Juanita — <a href="tel:+34667253955">667 25 39 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Juanita+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+  <p>...y otros.</p>
+
+  <p><strong>Restaurantes:</strong></p>
+  <ul>
+    <li>Kamala — <a href="tel:+34633772098">633 77 20 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Kamala+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>The Steakhouse (asador) — <a href="tel:+34856112744">856 11 27 44</a> · <a href="https://www.google.com/maps/search/?api=1&query=The+Steakhouse+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>El Fuego (asador) — <a href="tel:+34659273858">659 27 38 58</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Fuego+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Lolita — <a href="tel:+34956815541">956 81 55 41</a> · <a href="https://www.google.com/maps/search/?api=1&query=Lolita+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>El Embarcadero — <a href="tel:+34956846330">956 84 63 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Embarcadero+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Sedona — <a href="tel:+34628091100">628 09 11 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sedona+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>El Badulaque — <a href="tel:+34636914633">636 91 46 33</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Badulaque+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Casa Emilio — <a href="tel:+34956811600">956 81 16 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Emilio+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Casa Texa (comida mexicana) — <a href="tel:+34956812081">956 81 20 81</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Texa+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Shanghai (comida china, con servicio a domicilio) — <a href="tel:+34956810557">956 81 05 57</a> · <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Shanghai+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Los Príncipes "Casa Dani" — <a href="tel:+34661465464">661 46 54 64</a> · <a href="https://www.google.com/maps/search/?api=1&query=Los+Principes+Casa+Dani+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+  <p>...y otros.</p>
+
+  <p><strong>Otros:</strong></p>
+  <ul>
+    <li>La Cuchara — comida casera a precios asequibles, para recoger en el propio local. Tel: <a href="tel:+34956815478">956 81 54 78</a></li>
+    <li>Pollos Manolo — especializados en pollo asado para llevar. <a href="tel:+34856113611">856 11 36 11</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+Manolo+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pollos y Asados Virginia — <a href="tel:+34956118118">956 11 81 18</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+y+Asados+Virginia+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+
+  <p><strong>Chiringuitos de playa:</strong></p>
+  <ul>
+    <li>Azúcar de Cuba — <a href="tel:+34956841029">956 84 10 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Az%C3%BAcar+de+Cuba+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Chiringuito BhudaCandor — <a href="tel:+34608983896">608 98 38 96</a> · <a href="https://www.google.com/maps/search/?api=1&query=Chiringuito+BhudaCandor+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Las Dunas Restaurant & Beach — <a href="tel:+34693271147">693 27 11 47</a> · <a href="https://www.google.com/maps/search/?api=1&query=Las+Dunas+Restaurant+%26+Beach+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Sunset · Beach Bar — <a href="tel:+34661862255">661 86 22 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sunset+Beach+Bar+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Mamba Beach Club Rota — <a href="tel:+34659669432">659 66 94 32</a> · <a href="https://www.google.com/maps/search/?api=1&query=Mamba+Beach+Club+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="excursiones">
+  <h2><svg width="24" height="24" viewBox="0 0 24 24" style="vertical-align:-5px"><path d="M12 2 L12 15 L18 15 Z" fill="#f2a765"/><path d="M12 5 L12 15 L6 15 Z" fill="#f2a765" opacity="0.85"/><path d="M3 17 L21 17 L18 21 L6 21 Z" fill="#8a6d3b"/><line x1="12" y1="2" x2="12" y2="17" stroke="#5a4a3a" stroke-width="0.8"/></svg>Excursiones Cercanas</h2>
+  <ul>
+    <li><strong>Cádiz (40 minutos en coche):</strong> aunque también puedes coger un ferry desde Rota hasta el centro de Cádiz, saliendo desde la <a href="https://www.google.com/maps/search/?api=1&query=Terminal+Maritima+Metropolitana+Rota" target="_blank" rel="noopener">Terminal Marítima Metropolitana de Rota</a>. Sale con frecuencia y tarda unos 30 minutos; el precio ronda los 5 € por persona. Para más información sobre los horarios actuales, consulta el portal del <a href="http://www.cmtbc.es/" target="_blank" rel="noopener">Consorcio de Transportes de la Bahía de Cádiz</a> o de <a href="http://www.catamaranbahiacadiz.es/" target="_blank" rel="noopener">Catamarán Bahía de Cádiz</a>.</li>
+    <li><strong>Jerez de la Frontera (25 minutos):</strong> alberga el aeropuerto más cercano (<a href="https://www.google.com/maps/search/?api=1&query=Aeropuerto+de+Jerez" target="_blank" rel="noopener">📍 Mapa</a>) y es conocida por sus vinos y el flamenco.</li>
+    <li><strong>Sanlúcar de Barrameda (25 minutos):</strong> una visita muy interesante a nivel gastronómico y cultural.</li>
+    <li><strong>Ruta de los Pueblos Blancos, en la sierra:</strong> Arcos, Ubrique, El Bosque, Grazalema...</li>
+  </ul>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<div class="detail" id="emergencia">
+  <h2>🚨 Contactos de Emergencia</h2>
+  <p>Emergencias: <a href="tel:112">112</a></p>
+  <p>Policía Nacional: <a href="tel:+34956843024">956 84 30 24</a></p>
+  <p>Policía Local: <a href="tel:+34956814292">956 81 42 92</a></p>
+  <p>Francisco González: <a href="tel:+34630590569">630 590 569</a></p>
+  <p>Julián González: <a href="tel:+34680191281">680 191 281</a></p>
+  <p>Farmacia de guardia: consulta cuál está abierta en <a href="https://www.heyrota.com/es/farmacia-de-guardia" target="_blank" rel="noopener">heyrota.com/es/farmacia-de-guardia</a></p>
+  <span class="cerrar" onclick="cerrar()">Cerrar</span>
+</div>
+
+<footer id="footer-text">Guía digital de huéspedes</footer>
+
+<script>
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      cerrar();
+      document.getElementById(card.dataset.target).classList.add('open');
+      document.getElementById(card.dataset.target).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  function cerrar(){
+    document.querySelectorAll('.detail').forEach(d => d.classList.remove('open'));
+  }
+
+  // ---- Traducción simultánea ES / EN / FR ----
+  const cardTitles = {
+    'bienvenida':   { es:'Bienvenida',                 en:'Welcome',                 fr:'Bienvenue' },
+    'normas':       { es:'Normas de la Casa',          en:'House Rules',             fr:'Règlement intérieur' },
+    'llegada':      { es:'Información de Llegada',     en:'Arrival Information',     fr:"Informations d'arrivée" },
+    'wifi':         { es:'WiFi / Internet',            en:'WiFi / Internet',         fr:'WiFi / Internet' },
+    'que-ver':      { es:'Qué Ver',                    en:'What to See',             fr:'Que voir' },
+    'donde-comer':  { es:'Dónde Comer',                en:'Where to Eat',            fr:'Où manger' },
+    'excursiones':  { es:'Excursiones',                en:'Excursions',              fr:'Excursions' },
+    'emergencia':   { es:'Contactos de Emergencia',    en:'Emergency Contacts',      fr:"Contacts d'urgence" }
+  };
+
+  const misc = {
+    subtitle: {
+      es:'Bienvenidos — todo lo que necesitas para tu estancia, en un solo lugar',
+      en:'Welcome — everything you need for your stay, all in one place',
+      fr:'Bienvenue — tout ce dont vous avez besoin pour votre séjour, au même endroit'
+    },
+    llamar:   { es:'Llamar', en:'Call', fr:'Appeler' },
+    whatsapp: { es:'WhatsApp', en:'WhatsApp', fr:'WhatsApp' },
+    email:    { es:'Email', en:'Email', fr:'E-mail' },
+    footer: {
+      es:'Guía digital de huéspedes',
+      en:'Digital guest guide',
+      fr:'Guide numérique pour les voyageurs'
+    }
+  };
+
+  const panels = {
+    wifi: {
+      es:`<h2>📶 WiFi / Internet</h2>
+        <p><strong>Nombre de la red:</strong> Datono 5G</p>
+        <p><strong>Contraseña:</strong> SevillabajoD</p>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>📶 WiFi / Internet</h2>
+        <p><strong>Network name:</strong> Datono 5G</p>
+        <p><strong>Password:</strong> SevillabajoD</p>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>📶 WiFi / Internet</h2>
+        <p><strong>Nom du réseau :</strong> Datono 5G</p>
+        <p><strong>Mot de passe :</strong> SevillabajoD</p>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    bienvenida: {
+      es:`<h2>👋🏼 Bienvenida</h2>
+        <p>Bienvenidos a <strong>Apartamento Rota a 50m del mar</strong>. Gracias por confiar en nosotros para tu viaje a Rota — hemos preparado todo para que te sientas como en casa.</p>
+        <p>Bienvenidos a nuestro pueblo, Rota (Cádiz). Una ciudad costera ideal para disfrutar de sus playas, su gastronomía y la cultura andaluza.</p>
+        <p><strong>Oficina de Turismo:</strong> Calle Compás del Convento, 10 — <a href="tel:+34956846345">956 84 63 45</a></p>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>👋🏼 Welcome</h2>
+        <p>Welcome to <strong>Apartamento Rota a 50m del mar</strong>. Thank you for trusting us for your trip to Rota — we've prepared everything so you feel right at home.</p>
+        <p>Welcome to our town, Rota (Cádiz). A coastal city, ideal for enjoying its beaches, its gastronomy and Andalusian culture.</p>
+        <p><strong>Tourist Office:</strong> Calle Compás del Convento, 10 — <a href="tel:+34956846345">956 84 63 45</a></p>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>👋🏼 Bienvenue</h2>
+        <p>Bienvenue à l'<strong>Apartamento Rota a 50m del mar</strong>. Merci de nous avoir fait confiance pour votre voyage à Rota — nous avons tout préparé pour que vous vous sentiez comme chez vous.</p>
+        <p>Bienvenue dans notre ville, Rota (Cadix). Une ville côtière idéale pour profiter de ses plages, de sa gastronomie et de la culture andalouse.</p>
+        <p><strong>Office de tourisme :</strong> Calle Compás del Convento, 10 — <a href="tel:+34956846345">956 84 63 45</a></p>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    llegada: {
+      es:`<h2>🧳 Información de Llegada</h2>
+        <p><strong>Hora de check-in:</strong> 15:00</p>
+        <p><strong>Dirección exacta:</strong> Avenida Sevilla nº 60 Bajo D</p>
+        <p>Las llaves se entregan en mano.</p>
+        <p><strong>Check-out:</strong> a las 12:00. Por favor, deja las llaves dentro del propio apartamento, encima de la mesa, y avísanos por WhatsApp.</p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=Avenida+Sevilla+60+Rota" target="_blank" rel="noopener">📍 Ver ubicación en Google Maps</a></p>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>🧳 Arrival Information</h2>
+        <p><strong>Check-in time:</strong> 3:00 PM</p>
+        <p><strong>Exact address:</strong> Avenida Sevilla nº 60 Bajo D</p>
+        <p>Keys are handed over in person.</p>
+        <p><strong>Check-out:</strong> at 12:00 PM. Please leave the keys inside the apartment, on the table, and let us know via WhatsApp.</p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=Avenida+Sevilla+60+Rota" target="_blank" rel="noopener">📍 View location on Google Maps</a></p>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>🧳 Informations d'arrivée</h2>
+        <p><strong>Heure d'arrivée :</strong> 15h00</p>
+        <p><strong>Adresse exacte :</strong> Avenida Sevilla nº 60 Bajo D</p>
+        <p>Les clés sont remises en main propre.</p>
+        <p><strong>Check-out :</strong> à 12h00. Merci de laisser les clés à l'intérieur de l'appartement, sur la table, et de nous prévenir par WhatsApp.</p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=Avenida+Sevilla+60+Rota" target="_blank" rel="noopener">📍 Voir la localisation sur Google Maps</a></p>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    normas: {
+      es:`<h2>📖 Normas de la Casa</h2>
+        <ul>
+          <li>No está permitido fumar dentro de la casa.</li>
+    <li>No se pueden hacer fiestas ni eventos.</li>
+          <li>Respeta el horario de silencio (entre las <strong>00:00</strong> y las <strong>8:00</strong>).</li>
+          <li>Está prohibido hacer copias de las llaves.</li>
+          <li>Cierra siempre las puertas y ventanas al salir.</li>
+          <li>Saca la basura regularmente (los contenedores están a la derecha al salir del edificio).</li>
+          <li>Apaga las luces y el aire acondicionado/calefacción al salir.</li>
+          <li>El número máximo de huéspedes es <strong>3</strong>.</li>
+          <li>Si tienes algún problema, contacta con nosotros lo antes posible para resolverlo.</li>
+          <li>La hora de check-out es las <strong>12:00</strong> del mediodía.</li>
+    <li>La placa de inducción tiene un bloqueo de seguridad: para quitarlo, mantén pulsado el símbolo del candado unos 5 segundos, hasta que desaparezca.</li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>📖 House Rules</h2>
+        <ul>
+          <li>Smoking is not permitted inside the house.</li>
+          <li>Parties and events are not allowed.</li>
+          <li>Please respect quiet hours (between <strong>12:00 AM</strong> and <strong>8:00 AM</strong>).</li>
+          <li>Making copies of the keys is prohibited.</li>
+          <li>Always close the doors and windows when you leave.</li>
+          <li>Take out the trash regularly (the bins are located to the right as you leave the building).</li>
+          <li>Turn off the lights and the air conditioning/heating when you leave.</li>
+          <li>The maximum number of guests is <strong>3</strong>.</li>
+          <li>If you run into any problems, please contact us as soon as possible so we can resolve them.</li>
+          <li>Check-out time is <strong>12:00 PM</strong>.</li>
+          <li>The induction hob has a safety lock: to unlock it, press and hold the padlock symbol for about 5 seconds, until it disappears.</li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>📖 Règlement intérieur</h2>
+        <ul>
+          <li>Il est interdit de fumer à l'intérieur de la maison.</li>
+          <li>Les fêtes et événements ne sont pas autorisés.</li>
+          <li>Merci de respecter les heures de silence (entre <strong>minuit</strong> et <strong>8h00</strong>).</li>
+          <li>Il est interdit de faire des copies des clés.</li>
+          <li>Fermez toujours les portes et les fenêtres en sortant.</li>
+          <li>Sortez les poubelles régulièrement (les conteneurs se trouvent à droite en sortant de l'immeuble).</li>
+          <li>Éteignez les lumières et la climatisation/le chauffage en sortant.</li>
+          <li>Le nombre maximum de personnes est de <strong>3</strong>.</li>
+          <li>En cas de problème, merci de nous contacter dès que possible afin que nous puissions le résoudre.</li>
+          <li>L'heure de départ (check-out) est fixée à <strong>12h00</strong>.</li>
+          <li>La plaque à induction dispose d'un verrouillage de sécurité : pour le désactiver, maintenez appuyé le symbole du cadenas pendant environ 5 secondes, jusqu'à ce qu'il disparaisse.</li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    'que-ver': {
+      es:`<h2>🧭 Qué Ver</h2>
+        <p><strong>Playas:</strong></p>
+        <ul>
+          <li>Playa de La Costilla — la más famosa. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Costilla+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+          <li>Playa de Punta Candor. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Punta+Candor+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+          <li>Playa de El Chorrillo — la más familiar. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+El+Chorrillo+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+          <li>Explora el paseo marítimo en bici o patinete junto al mar.</li>
+          <li>Rutas ciclistas y senderos naturales por la costa.</li>
+        </ul>
+        <p><strong>Cultura e historia</strong> (Oficina de Turismo: <a href="tel:+34956846345">956 84 63 45</a>):</p>
+        <ul>
+          <li>Castillo de Luna — actualmente alberga el ayuntamiento, pero se puede visitar y a menudo acoge exposiciones. <a href="https://www.google.com/maps/search/?api=1&query=Castillo+de+Luna+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+          <li>Iglesia Nuestra Señora de la O — monumento histórico. <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+Nuestra+Se%C3%B1ora+de+la+O+Rota" target="_blank" rel="noopener">📍 Mapa</a></li>
+        </ul>
+        <p><strong>Fiestas y eventos de interés:</strong></p>
+        <ul>
+          <li>Concentración Motera: primer fin de semana de febrero (confirmar fechas).</li>
+          <li>Carnaval, en febrero (confirmar fechas).</li>
+          <li>Semana Santa: una de las tradiciones más importantes de la región, normalmente en abril.</li>
+          <li>Feria de Primavera: principios de mayo (confirmar fechas).</li>
+          <li>Fiesta de la Urta (verano).</li>
+          <li>Fiestas patronales (octubre).</li>
+        </ul>
+        <p><strong>Mercadillo:</strong> todos los miércoles por la mañana, a la entrada de Rota (ropa, calzado, artesanía, etc.). <a href="https://www.google.com/maps/search/?api=1&query=Rota+Flea+Market" target="_blank" rel="noopener">📍 Mapa</a></p>
+
+  <p><strong>Nuestras recomendaciones:</strong> ver el atardecer en Punta Candor o en cualquier chiringuito de la playa, pasear por el paseo marítimo, probar los vinos andaluces en La Bodega del Gato o La Bodeguita —en especial la Tintilla de Rota, un vino local—, comer en los mercados locales, hacer la Senda de la Poesía localizando entre las calles del casco antiguo poemas de autores andaluces, y dar un paseo por el bosque de pinos.</p>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>🧭 What to See</h2>
+        <p><strong>Beaches:</strong></p>
+        <ul>
+          <li>La Costilla Beach — the most famous. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Costilla+Rota" target="_blank" rel="noopener">📍 Map</a></li>
+          <li>Punta Candor Beach. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Punta+Candor+Rota" target="_blank" rel="noopener">📍 Map</a></li>
+          <li>El Chorrillo Beach — the most family-friendly. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+El+Chorrillo+Rota" target="_blank" rel="noopener">📍 Map</a></li>
+          <li>Explore the seafront promenade by bike or scooter.</li>
+          <li>Coastal cycling routes and nature trails.</li>
+        </ul>
+        <p><strong>Culture and history</strong> (Tourist Office: <a href="tel:+34956846345">956 84 63 45</a>):</p>
+        <ul>
+          <li>Castillo de Luna — currently houses the town hall, but it's open to visitors and often hosts exhibitions. <a href="https://www.google.com/maps/search/?api=1&query=Castillo+de+Luna+Rota" target="_blank" rel="noopener">📍 Map</a></li>
+          <li>Iglesia Nuestra Señora de la O — historical monument. <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+Nuestra+Se%C3%B1ora+de+la+O+Rota" target="_blank" rel="noopener">📍 Map</a></li>
+        </ul>
+        <p><strong>Festivals and events of interest:</strong></p>
+        <ul>
+          <li>Motorcycle Rally: first weekend of February (check dates).</li>
+          <li>Carnival, in February (check dates).</li>
+          <li>Holy Week: one of the region's most important traditions, usually in April.</li>
+          <li>Spring Fair: early May (check dates).</li>
+          <li>Urta Festival (summer).</li>
+          <li>Patron saint festivities (October).</li>
+        </ul>
+        <p><strong>Market:</strong> every Wednesday morning, at the entrance to Rota (clothing, footwear, crafts, etc.). <a href="https://www.google.com/maps/search/?api=1&query=Rota+Flea+Market" target="_blank" rel="noopener">📍 Map</a></p>
+
+        <p><strong>Our recommendations:</strong> watch the sunset at Punta Candor or at any beach chiringuito, stroll along the seafront promenade, try Andalusian wines at La Bodega del Gato or La Bodeguita — especially the Tintilla de Rota, a local wine —, eat at the local markets, follow the Poetry Trail (Senda de la Poesía), spotting poems by Andalusian authors around the old town's streets, and take a walk through the pine forest.</p>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>🧭 Que voir</h2>
+        <p><strong>Plages :</strong></p>
+        <ul>
+          <li>Plage de La Costilla — la plus célèbre. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Costilla+Rota" target="_blank" rel="noopener">📍 Carte</a></li>
+          <li>Plage de Punta Candor. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+Punta+Candor+Rota" target="_blank" rel="noopener">📍 Carte</a></li>
+          <li>Plage d'El Chorrillo — la plus familiale. <a href="https://www.google.com/maps/search/?api=1&query=Playa+de+El+Chorrillo+Rota" target="_blank" rel="noopener">📍 Carte</a></li>
+          <li>Explorez la promenade en bord de mer à vélo ou en trottinette.</li>
+          <li>Pistes cyclables et sentiers naturels le long de la côte.</li>
+        </ul>
+        <p><strong>Culture et histoire</strong> (Office de tourisme : <a href="tel:+34956846345">956 84 63 45</a>) :</p>
+        <ul>
+          <li>Castillo de Luna — abrite aujourd'hui la mairie, mais se visite et accueille souvent des expositions.</li>
+          <li>Église Nuestra Señora de la O — monument historique.</li>
+        </ul>
+        <p><strong>Fêtes et événements à ne pas manquer :</strong></p>
+        <ul>
+          <li>Rassemblement moto : premier week-end de février (vérifier les dates).</li>
+          <li>Carnaval, en février (vérifier les dates).</li>
+          <li>Semaine Sainte : l'une des traditions les plus importantes de la région, généralement en avril.</li>
+          <li>Foire de printemps : début mai (vérifier les dates).</li>
+          <li>Fête de l'Urta (été).</li>
+          <li>Fêtes patronales (octobre).</li>
+        </ul>
+        <p><strong>Marché :</strong> tous les mercredis matin, à l'entrée de Rota (vêtements, chaussures, artisanat, etc.). <a href="https://www.google.com/maps/search/?api=1&query=Rota+Flea+Market" target="_blank" rel="noopener">📍 Carte</a></p>
+
+        <p><strong>Nos recommandations :</strong> admirer le coucher de soleil à Punta Candor ou dans n'importe quel chiringuito de plage, se promener le long de la promenade en bord de mer, goûter les vins andalous à La Bodega del Gato ou La Bodeguita — en particulier la Tintilla de Rota, un vin local —, manger sur les marchés locaux, suivre le Sentier de la Poésie (Senda de la Poesía) en repérant dans les rues de la vieille ville des poèmes d'auteurs andalous, et se promener dans la pinède.</p>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    'donde-comer': {
+      es:`<h2>🍽️ Dónde Comer</h2>
+        <p>Rota ofrece una gran variedad de restaurantes, bares, cafeterías y pizzerías (casi todos con reparto a domicilio). Si buscas algo en concreto, no dudes en contactarnos para ayudarte a encontrar el lugar perfecto según tus gustos.</p>
+        <p>No te vayas sin probar: <strong>el arranque</strong> (verdura asada al estilo de Rota), <strong>el pescado frito</strong>, <strong>las tortillitas de camarones</strong> y la <strong>Tintilla de Rota</strong>, un vino local. Aquí tienes los teléfonos y ubicaciones de muchos establecimientos de la zona:</p>
+
+  <p><strong>Pizzerías</strong> (en todas encontrarás también servicio a domicilio):</p>
+  <ul>
+    <li>Pizzería Gallego — <a href="tel:+34956813612">956 81 36 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Gallego+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Me Gusta — <a href="tel:+34956812530">956 81 25 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Me+Gusta+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Yola — <a href="tel:+34956815822">956 81 58 22</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Yola+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería La Forestal — <a href="tel:+34956840239">956 84 02 39</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+La+Forestal+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Villa de Rota — <a href="tel:+34956815100">956 81 51 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Villa+de+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Daylos — <a href="tel:+34856113429">856 11 34 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Daylos+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Rofe — <a href="tel:+34956811705">956 81 17 05</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Rofe+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Slice of New York — <a href="tel:+34956843002">956 84 30 02</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Slice+of+New+York+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Pink Pepper — <a href="tel:+34856003053">856 00 30 53</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Pink+Pepper+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pizzería Burguer Ton — <a href="tel:+34956812713">956 81 27 13</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Burguer+Ton+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+
+  <p><strong>Cocina local:</strong></p>
+  <ul>
+    <li>Bar Rubio Corona — <a href="tel:+34633502798">633 50 27 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+Rubio+Corona+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Bodegas El Gato SL — <a href="tel:+34956810203">956 81 02 03</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bodegas+El+Gato+SL+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Bar La Esquina de San Roque — <a href="tel:+34645424935">645 42 49 35</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+La+Esquina+de+San+Roque+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>No Ni Na (cocina y asado) — <a href="tel:+34956625916">956 62 59 16</a> · <a href="https://www.google.com/maps/search/?api=1&query=No+Ni+Na+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>La Retama — <a href="tel:+34646043712">646 04 37 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=La+Retama+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Juanita — <a href="tel:+34667253955">667 25 39 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Juanita+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+  <p>...y otros.</p>
+
+  <p><strong>Restaurantes:</strong></p>
+  <ul>
+    <li>Kamala — <a href="tel:+34633772098">633 77 20 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Kamala+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>The Steakhouse (asador) — <a href="tel:+34856112744">856 11 27 44</a> · <a href="https://www.google.com/maps/search/?api=1&query=The+Steakhouse+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>El Fuego (asador) — <a href="tel:+34659273858">659 27 38 58</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Fuego+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Lolita — <a href="tel:+34956815541">956 81 55 41</a> · <a href="https://www.google.com/maps/search/?api=1&query=Lolita+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>El Embarcadero — <a href="tel:+34956846330">956 84 63 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Embarcadero+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Sedona — <a href="tel:+34628091100">628 09 11 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sedona+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>El Badulaque — <a href="tel:+34636914633">636 91 46 33</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Badulaque+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Casa Emilio — <a href="tel:+34956811600">956 81 16 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Emilio+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Casa Texa (comida mexicana) — <a href="tel:+34956812081">956 81 20 81</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Texa+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Shanghai (comida china, con servicio a domicilio) — <a href="tel:+34956810557">956 81 05 57</a> · <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Shanghai+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Los Príncipes "Casa Dani" — <a href="tel:+34661465464">661 46 54 64</a> · <a href="https://www.google.com/maps/search/?api=1&query=Los+Principes+Casa+Dani+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+  <p>...y otros.</p>
+
+  <p><strong>Otros:</strong></p>
+  <ul>
+    <li>La Cuchara — comida casera a precios asequibles, para recoger en el propio local. Tel: <a href="tel:+34956815478">956 81 54 78</a></li>
+    <li>Pollos Manolo — especializados en pollo asado para llevar. <a href="tel:+34856113611">856 11 36 11</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+Manolo+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Pollos y Asados Virginia — <a href="tel:+34956118118">956 11 81 18</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+y+Asados+Virginia+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+
+  <p><strong>Chiringuitos de playa:</strong></p>
+  <ul>
+    <li>Azúcar de Cuba — <a href="tel:+34956841029">956 84 10 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Az%C3%BAcar+de+Cuba+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Chiringuito BhudaCandor — <a href="tel:+34608983896">608 98 38 96</a> · <a href="https://www.google.com/maps/search/?api=1&query=Chiringuito+BhudaCandor+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Las Dunas Restaurant & Beach — <a href="tel:+34693271147">693 27 11 47</a> · <a href="https://www.google.com/maps/search/?api=1&query=Las+Dunas+Restaurant+%26+Beach+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Sunset · Beach Bar — <a href="tel:+34661862255">661 86 22 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sunset+Beach+Bar+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Mamba Beach Club Rota — <a href="tel:+34659669432">659 66 94 32</a> · <a href="https://www.google.com/maps/search/?api=1&query=Mamba+Beach+Club+Rota" target="_blank" rel="noopener">📍</a></li>
+  </ul>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>🍽️ Where to Eat</h2>
+        <p>Rota offers a wide variety of restaurants, bars, cafés and pizzerias (almost all of them offering delivery). If you're looking for something specific, don't hesitate to contact us and we'll help you find the perfect place for your taste.</p>
+        <p>Don't leave without trying: <strong>arranque</strong> (Rota-style roasted vegetables), <strong>pescado frito</strong> (fried fish), <strong>tortillitas de camarones</strong> (shrimp fritters), and <strong>Tintilla de Rota</strong>, a local wine. Here are the phone numbers and locations for many places in the area:</p>
+
+        <p><strong>Pizzerias</strong> (all of them also offer home delivery):</p>
+        <ul>
+          <li>Pizzeria Gallego — <a href="tel:+34956813612">956 81 36 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Gallego+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Me Gusta — <a href="tel:+34956812530">956 81 25 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Me+Gusta+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Yola — <a href="tel:+34956815822">956 81 58 22</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Yola+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria La Forestal — <a href="tel:+34956840239">956 84 02 39</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+La+Forestal+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Villa de Rota — <a href="tel:+34956815100">956 81 51 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Villa+de+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Daylos — <a href="tel:+34856113429">856 11 34 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Daylos+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Rofe — <a href="tel:+34956811705">956 81 17 05</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Rofe+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Slice of New York — <a href="tel:+34956843002">956 84 30 02</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Slice+of+New+York+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Pink Pepper — <a href="tel:+34856003053">856 00 30 53</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Pink+Pepper+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Burguer Ton — <a href="tel:+34956812713">956 81 27 13</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Burguer+Ton+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+
+        <p><strong>Local cuisine:</strong></p>
+        <ul>
+          <li>Bar Rubio Corona — <a href="tel:+34633502798">633 50 27 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+Rubio+Corona+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Bodegas El Gato SL — <a href="tel:+34956810203">956 81 02 03</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bodegas+El+Gato+SL+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Bar La Esquina de San Roque — <a href="tel:+34645424935">645 42 49 35</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+La+Esquina+de+San+Roque+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>No Ni Na (home cooking & grill) — <a href="tel:+34956625916">956 62 59 16</a> · <a href="https://www.google.com/maps/search/?api=1&query=No+Ni+Na+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>La Retama — <a href="tel:+34646043712">646 04 37 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=La+Retama+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Juanita — <a href="tel:+34667253955">667 25 39 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Juanita+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+        <p>...among others.</p>
+
+        <p><strong>Restaurants:</strong></p>
+        <ul>
+          <li>Kamala — <a href="tel:+34633772098">633 77 20 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Kamala+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>The Steakhouse (grill) — <a href="tel:+34856112744">856 11 27 44</a> · <a href="https://www.google.com/maps/search/?api=1&query=The+Steakhouse+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>El Fuego (grill) — <a href="tel:+34659273858">659 27 38 58</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Fuego+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Lolita — <a href="tel:+34956815541">956 81 55 41</a> · <a href="https://www.google.com/maps/search/?api=1&query=Lolita+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>El Embarcadero — <a href="tel:+34956846330">956 84 63 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Embarcadero+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Sedona — <a href="tel:+34628091100">628 09 11 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sedona+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>El Badulaque — <a href="tel:+34636914633">636 91 46 33</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Badulaque+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Casa Emilio — <a href="tel:+34956811600">956 81 16 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Emilio+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Casa Texa (Mexican food) — <a href="tel:+34956812081">956 81 20 81</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Texa+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Shanghai (Chinese food, with delivery service) — <a href="tel:+34956810557">956 81 05 57</a> · <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Shanghai+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Los Príncipes "Casa Dani" — <a href="tel:+34661465464">661 46 54 64</a> · <a href="https://www.google.com/maps/search/?api=1&query=Los+Principes+Casa+Dani+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+        <p>...among others.</p>
+
+        <p><strong>Others:</strong></p>
+        <ul>
+          <li>La Cuchara — a company that makes all kinds of homemade food at affordable prices, for pickup at the restaurant. Tel: <a href="tel:+34956815478">956 81 54 78</a></li>
+          <li>Pollos Manolo — specializing in roast chicken for takeaway. <a href="tel:+34856113611">856 11 36 11</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+Manolo+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pollos y Asados Virginia — <a href="tel:+34956118118">956 11 81 18</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+y+Asados+Virginia+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+
+        <p><strong>Beach bars (chiringuitos):</strong></p>
+        <ul>
+          <li>Azúcar de Cuba — <a href="tel:+34956841029">956 84 10 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Az%C3%BAcar+de+Cuba+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Chiringuito BhudaCandor — <a href="tel:+34608983896">608 98 38 96</a> · <a href="https://www.google.com/maps/search/?api=1&query=Chiringuito+BhudaCandor+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Las Dunas Restaurant & Beach — <a href="tel:+34693271147">693 27 11 47</a> · <a href="https://www.google.com/maps/search/?api=1&query=Las+Dunas+Restaurant+%26+Beach+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Sunset · Beach Bar — <a href="tel:+34661862255">661 86 22 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sunset+Beach+Bar+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Mamba Beach Club Rota — <a href="tel:+34659669432">659 66 94 32</a> · <a href="https://www.google.com/maps/search/?api=1&query=Mamba+Beach+Club+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>🍽️ Où manger</h2>
+        <p>Rota propose une grande variété de restaurants, bars, cafés et pizzerias (presque tous avec possibilité de livraison). Si vous cherchez quelque chose de particulier, n'hésitez pas à nous contacter : nous vous aiderons à trouver l'endroit idéal selon vos goûts.</p>
+        <p>Ne repartez pas sans avoir goûté : <strong>l'arranque</strong> (légumes rôtis à la mode de Rota), <strong>le pescado frito</strong> (poisson frit), <strong>les tortillitas de camarones</strong> (beignets de crevettes) et la <strong>Tintilla de Rota</strong>, un vin local. Voici les numéros de téléphone et les emplacements de nombreux établissements du coin :</p>
+
+        <p><strong>Pizzerias</strong> (toutes proposent également un service de livraison à domicile) :</p>
+        <ul>
+          <li>Pizzeria Gallego — <a href="tel:+34956813612">956 81 36 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Gallego+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Me Gusta — <a href="tel:+34956812530">956 81 25 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Me+Gusta+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Yola — <a href="tel:+34956815822">956 81 58 22</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Yola+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria La Forestal — <a href="tel:+34956840239">956 84 02 39</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+La+Forestal+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Villa de Rota — <a href="tel:+34956815100">956 81 51 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Villa+de+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Daylos — <a href="tel:+34856113429">856 11 34 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Daylos+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Rofe — <a href="tel:+34956811705">956 81 17 05</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Rofe+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Slice of New York — <a href="tel:+34956843002">956 84 30 02</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Slice+of+New+York+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Pink Pepper — <a href="tel:+34856003053">856 00 30 53</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Pink+Pepper+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pizzeria Burguer Ton — <a href="tel:+34956812713">956 81 27 13</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Burguer+Ton+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+
+        <p><strong>Cuisine locale :</strong></p>
+        <ul>
+          <li>Bar Rubio Corona — <a href="tel:+34633502798">633 50 27 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+Rubio+Corona+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Bodegas El Gato SL — <a href="tel:+34956810203">956 81 02 03</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bodegas+El+Gato+SL+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Bar La Esquina de San Roque — <a href="tel:+34645424935">645 42 49 35</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bar+La+Esquina+de+San+Roque+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>No Ni Na (cuisine maison et grillades) — <a href="tel:+34956625916">956 62 59 16</a> · <a href="https://www.google.com/maps/search/?api=1&query=No+Ni+Na+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>La Retama — <a href="tel:+34646043712">646 04 37 12</a> · <a href="https://www.google.com/maps/search/?api=1&query=La+Retama+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Juanita — <a href="tel:+34667253955">667 25 39 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Juanita+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+        <p>...et d'autres.</p>
+
+        <p><strong>Restaurants :</strong></p>
+        <ul>
+          <li>Kamala — <a href="tel:+34633772098">633 77 20 98</a> · <a href="https://www.google.com/maps/search/?api=1&query=Kamala+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>The Steakhouse (grill) — <a href="tel:+34856112744">856 11 27 44</a> · <a href="https://www.google.com/maps/search/?api=1&query=The+Steakhouse+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>El Fuego (grill) — <a href="tel:+34659273858">659 27 38 58</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Fuego+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Lolita — <a href="tel:+34956815541">956 81 55 41</a> · <a href="https://www.google.com/maps/search/?api=1&query=Lolita+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>El Embarcadero — <a href="tel:+34956846330">956 84 63 30</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Embarcadero+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Sedona — <a href="tel:+34628091100">628 09 11 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sedona+Restaurante+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>El Badulaque — <a href="tel:+34636914633">636 91 46 33</a> · <a href="https://www.google.com/maps/search/?api=1&query=El+Badulaque+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Casa Emilio — <a href="tel:+34956811600">956 81 16 00</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Emilio+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Casa Texa (cuisine mexicaine) — <a href="tel:+34956812081">956 81 20 81</a> · <a href="https://www.google.com/maps/search/?api=1&query=Casa+Texa+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Shanghai (cuisine chinoise, avec livraison à domicile) — <a href="tel:+34956810557">956 81 05 57</a> · <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Shanghai+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Los Príncipes "Casa Dani" — <a href="tel:+34661465464">661 46 54 64</a> · <a href="https://www.google.com/maps/search/?api=1&query=Los+Principes+Casa+Dani+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+        <p>...et d'autres.</p>
+
+        <p><strong>Autres :</strong></p>
+        <ul>
+          <li>La Cuchara — entreprise de plats maison à prix abordables, à récupérer sur place. Tél. : <a href="tel:+34956815478">956 81 54 78</a></li>
+          <li>Pollos Manolo — spécialisé dans le poulet rôti à emporter. <a href="tel:+34856113611">856 11 36 11</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+Manolo+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Pollos y Asados Virginia — <a href="tel:+34956118118">956 11 81 18</a> · <a href="https://www.google.com/maps/search/?api=1&query=Pollos+y+Asados+Virginia+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+
+        <p><strong>Chiringuitos de plage :</strong></p>
+        <ul>
+          <li>Azúcar de Cuba — <a href="tel:+34956841029">956 84 10 29</a> · <a href="https://www.google.com/maps/search/?api=1&query=Az%C3%BAcar+de+Cuba+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Chiringuito BhudaCandor — <a href="tel:+34608983896">608 98 38 96</a> · <a href="https://www.google.com/maps/search/?api=1&query=Chiringuito+BhudaCandor+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Las Dunas Restaurant & Beach — <a href="tel:+34693271147">693 27 11 47</a> · <a href="https://www.google.com/maps/search/?api=1&query=Las+Dunas+Restaurant+%26+Beach+Rota" target="_blank" rel="noopener">📍</a></li>
+          <li>Sunset · Beach Bar — <a href="tel:+34661862255">661 86 22 55</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sunset+Beach+Bar+Rota" target="_blank" rel="noopener">📍</a></li>
+    <li>Mamba Beach Club Rota — <a href="tel:+34659669432">659 66 94 32</a> · <a href="https://www.google.com/maps/search/?api=1&query=Mamba+Beach+Club+Rota" target="_blank" rel="noopener">📍</a></li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    excursiones: {
+      es:`<h2><svg width="24" height="24" viewBox="0 0 24 24" style="vertical-align:-5px"><path d="M12 2 L12 15 L18 15 Z" fill="#f2a765"/><path d="M12 5 L12 15 L6 15 Z" fill="#f2a765" opacity="0.85"/><path d="M3 17 L21 17 L18 21 L6 21 Z" fill="#8a6d3b"/><line x1="12" y1="2" x2="12" y2="17" stroke="#5a4a3a" stroke-width="0.8"/></svg>Excursiones Cercanas</h2>
+        <ul>
+          <li><strong>Cádiz (40 minutos en coche):</strong> aunque también puedes coger un ferry desde Rota hasta el centro de Cádiz, saliendo desde la <a href="https://www.google.com/maps/search/?api=1&query=Terminal+Maritima+Metropolitana+Rota" target="_blank" rel="noopener">Terminal Marítima Metropolitana de Rota</a>. Sale con frecuencia y tarda unos 30 minutos; el precio ronda los 5 € por persona. Para más información sobre los horarios actuales, consulta el portal del <a href="http://www.cmtbc.es/" target="_blank" rel="noopener">Consorcio de Transportes de la Bahía de Cádiz</a> o de <a href="http://www.catamaranbahiacadiz.es/" target="_blank" rel="noopener">Catamarán Bahía de Cádiz</a>.</li>
+          <li><strong>Jerez de la Frontera (25 minutos):</strong> alberga el aeropuerto más cercano (<a href="https://www.google.com/maps/search/?api=1&query=Aeropuerto+de+Jerez" target="_blank" rel="noopener">📍 Mapa</a>) y es conocida por sus vinos y el flamenco.</li>
+          <li><strong>Sanlúcar de Barrameda (25 minutos):</strong> una visita muy interesante a nivel gastronómico y cultural.</li>
+          <li><strong>Ruta de los Pueblos Blancos, en la sierra:</strong> Arcos, Ubrique, El Bosque, Grazalema...</li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2><svg width="24" height="24" viewBox="0 0 24 24" style="vertical-align:-5px"><path d="M12 2 L12 15 L18 15 Z" fill="#f2a765"/><path d="M12 5 L12 15 L6 15 Z" fill="#f2a765" opacity="0.85"/><path d="M3 17 L21 17 L18 21 L6 21 Z" fill="#8a6d3b"/><line x1="12" y1="2" x2="12" y2="17" stroke="#5a4a3a" stroke-width="0.8"/></svg>Nearby Excursions</h2>
+        <ul>
+          <li><strong>Cádiz (40 minutes by car):</strong> you can also take a ferry from Rota to the center of Cádiz, departing from the <a href="https://www.google.com/maps/search/?api=1&query=Terminal+Maritima+Metropolitana+Rota" target="_blank" rel="noopener">Terminal Marítima Metropolitana de Rota</a>. It runs frequently and takes about 30 minutes; the price is around €5 per person. For up-to-date timetables, check the website of the <a href="http://www.cmtbc.es/" target="_blank" rel="noopener">Consorcio de Transportes de la Bahía de Cádiz</a> or <a href="http://www.catamaranbahiacadiz.es/" target="_blank" rel="noopener">Catamarán Bahía de Cádiz</a>.</li>
+          <li><strong>Jerez de la Frontera (25 minutes):</strong> home to the nearest airport (<a href="https://www.google.com/maps/search/?api=1&query=Aeropuerto+de+Jerez" target="_blank" rel="noopener">📍 Map</a>), and known for its wines and flamenco.</li>
+          <li><strong>Sanlúcar de Barrameda (25 minutes):</strong> a very interesting visit, both gastronomically and culturally.</li>
+          <li><strong>Route of the White Villages, in the mountains:</strong> Arcos, Ubrique, El Bosque, Grazalema...</li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2><svg width="24" height="24" viewBox="0 0 24 24" style="vertical-align:-5px"><path d="M12 2 L12 15 L18 15 Z" fill="#f2a765"/><path d="M12 5 L12 15 L6 15 Z" fill="#f2a765" opacity="0.85"/><path d="M3 17 L21 17 L18 21 L6 21 Z" fill="#8a6d3b"/><line x1="12" y1="2" x2="12" y2="17" stroke="#5a4a3a" stroke-width="0.8"/></svg>Excursions à proximité</h2>
+        <ul>
+          <li><strong>Cadix (40 minutes en voiture) :</strong> vous pouvez aussi prendre un ferry depuis Rota jusqu'au centre de Cadix, au départ de la <a href="https://www.google.com/maps/search/?api=1&query=Terminal+Maritima+Metropolitana+Rota" target="_blank" rel="noopener">Terminal Marítima Metropolitana de Rota</a>. Il circule fréquemment et le trajet dure environ 30 minutes ; le prix est d'environ 5 € par personne. Pour les horaires actuels, consultez le site du <a href="http://www.cmtbc.es/" target="_blank" rel="noopener">Consorcio de Transportes de la Bahía de Cádiz</a> ou de <a href="http://www.catamaranbahiacadiz.es/" target="_blank" rel="noopener">Catamarán Bahía de Cádiz</a>.</li>
+          <li><strong>Jerez de la Frontera (25 minutes) :</strong> abrite l'aéroport le plus proche (<a href="https://www.google.com/maps/search/?api=1&query=Aeropuerto+de+Jerez" target="_blank" rel="noopener">📍 Carte</a>) et est réputée pour ses vins et le flamenco.</li>
+          <li><strong>Sanlúcar de Barrameda (25 minutes) :</strong> une visite très intéressante sur le plan gastronomique et culturel.</li>
+          <li><strong>Route des villages blancs, dans la sierra :</strong> Arcos, Ubrique, El Bosque, Grazalema...</li>
+        </ul>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    },
+    emergencia: {
+      es:`<h2>🚨 Contactos de Emergencia</h2>
+        <p>Emergencias: <a href="tel:112">112</a></p>
+        <p>Policía Nacional: <a href="tel:+34956843024">956 84 30 24</a></p>
+        <p>Policía Local: <a href="tel:+34956814292">956 81 42 92</a></p>
+        <p>Francisco González: <a href="tel:+34630590569">630 590 569</a></p>
+        <p>Julián González: <a href="tel:+34680191281">680 191 281</a></p>
+        <p>Farmacia de guardia: consulta cuál está abierta en <a href="https://www.heyrota.com/es/farmacia-de-guardia" target="_blank" rel="noopener">heyrota.com/es/farmacia-de-guardia</a></p>
+        <span class="cerrar" onclick="cerrar()">Cerrar</span>`,
+      en:`<h2>🚨 Emergency Contacts</h2>
+        <p>Emergencies: <a href="tel:112">112</a></p>
+        <p>National Police: <a href="tel:+34956843024">956 84 30 24</a></p>
+        <p>Local Police: <a href="tel:+34956814292">956 81 42 92</a></p>
+        <p>Francisco González: <a href="tel:+34630590569">630 590 569</a></p>
+        <p>Julián González: <a href="tel:+34680191281">680 191 281</a></p>
+        <p>On-duty pharmacy: check which one is open at <a href="https://www.heyrota.com/es/farmacia-de-guardia" target="_blank" rel="noopener">heyrota.com/es/farmacia-de-guardia</a></p>
+        <span class="cerrar" onclick="cerrar()">Close</span>`,
+      fr:`<h2>🚨 Contacts d'urgence</h2>
+        <p>Urgences : <a href="tel:112">112</a></p>
+        <p>Police nationale : <a href="tel:+34956843024">956 84 30 24</a></p>
+        <p>Police locale : <a href="tel:+34956814292">956 81 42 92</a></p>
+        <p>Francisco González : <a href="tel:+34630590569">630 590 569</a></p>
+        <p>Julián González : <a href="tel:+34680191281">680 191 281</a></p>
+        <p>Pharmacie de garde : consultez laquelle est ouverte sur <a href="https://www.heyrota.com/es/farmacia-de-guardia" target="_blank" rel="noopener">heyrota.com/es/farmacia-de-guardia</a></p>
+        <span class="cerrar" onclick="cerrar()">Fermer</span>`
+    }
+  };
+
+  function setLang(lang){
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.getElementById('subtitle').textContent = misc.subtitle[lang];
+    document.getElementById('lbl-llamar').textContent = misc.llamar[lang];
+    document.getElementById('lbl-whatsapp').textContent = misc.whatsapp[lang];
+    document.getElementById('lbl-email').textContent = misc.email[lang];
+    document.getElementById('footer-text').textContent = misc.footer[lang];
+    Object.keys(cardTitles).forEach(key => {
+      const h3 = document.querySelector('.card[data-target="' + key + '"] h3');
+      if(h3) h3.textContent = cardTitles[key][lang];
+    });
+    Object.keys(panels).forEach(key => {
+      const wasOpen = document.getElementById(key).classList.contains('open');
+      document.getElementById(key).innerHTML = panels[key][lang];
+      if(wasOpen) document.getElementById(key).classList.add('open');
+    });
+  }
+</script>
+
+</body>
+</html>
